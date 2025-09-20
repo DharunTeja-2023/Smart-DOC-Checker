@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Doc Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Smart Doc Checker</h1>
+            <p class="subtitle">Analyze your documents for contradictions and inconsistencies</p>
+        </header>
+
+        <div class="dashboard">
+            <!-- Upload Documents Card -->
+            <div class="card upload-card">
+                <div class="card-header">
+                    <h2>Upload Documents</h2>
+                    <span class="card-subtitle">Maximum 3 files (PDF, DOCX, TXT)</span>
+                </div>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">Drag & drop files here or click to select</p>
+                        <input type="file" id="fileInput" multiple accept=".pdf,.docx,.txt" style="display: none;">
+                        <button class="select-btn" onclick="document.getElementById('fileInput').click()">Select Files</button>
+                    </div>
+                    <div class="files-list" id="filesList"></div>
+                </div>
+                <button class="analyze-btn" id="analyzeBtn" disabled>Start Analysis</button>
+            </div>
+
+            <!-- Live Monitoring Panel -->
+            <div class="card monitoring-card">
+                <div class="card-header">
+                    <h2>Live Monitoring</h2>
+                </div>
+                <div class="monitoring-content">
+                    <div class="metric">
+                        <span class="metric-label">Files Uploaded</span>
+                        <span class="metric-value" id="filesCount">0</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Analysis Time</span>
+                        <span class="metric-value" id="analysisTime">--</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Status</span>
+                        <span class="metric-value status-idle" id="overallStatus">Idle</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Status Section -->
+            <div class="card status-card">
+                <div class="card-header">
+                    <h2>Analysis Status</h2>
+                </div>
+                <div class="status-list">
+                    <div class="status-item">
+                        <span class="status-label">Document Processing</span>
+                        <span class="status-badge pending" id="processingStatus">Pending</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">AI Analysis</span>
+                        <span class="status-badge pending" id="aiStatus">Pending</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Report Generation</span>
+                        <span class="status-badge pending" id="reportStatus">Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="card results-card" id="resultsCard" style="display: none;">
+                <div class="card-header">
+                    <h2>Analysis Results</h2>
+                    <button class="close-btn" onclick="hideResults()">×</button>
+                </div>
+                <div class="results-content" id="resultsContent">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

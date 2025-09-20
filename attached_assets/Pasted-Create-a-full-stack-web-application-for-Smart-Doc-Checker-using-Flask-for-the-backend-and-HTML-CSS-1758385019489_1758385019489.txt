@@ -1,0 +1,24 @@
+Create a full-stack web application for "Smart Doc Checker" using Flask for the backend and HTML/CSS/JavaScript for the frontend. The application should allow a user to upload up to three documents (PDF, DOCX, or TXT), analyze them for contradictions using a simple keyword-based approach, and display a report. The UI should be clean and modern, similar to the provided screenshot of "Smart Doc Checker."
+
+Key Requirements to Include in Your Prompt:
+Here are some additional details you should include in your prompt to ensure the AI creates a robust and functional application:
+
+Backend (Flask)
+File Upload: Implement a route to handle multiple file uploads (/upload).
+
+File Type Validation: The backend must validate that the uploaded files are either .pdf, .docx, or .txt. If an invalid file type is uploaded, return an error message to the frontend.
+
+Contradiction Logic: The backend should have a function that takes the uploaded documents as input. The contradiction analysis can be a simple algorithm that looks for a set of pre-defined keywords or phrases (e.g., "budget," "deadline," "project name") and compares their values across the documents. If it finds a different value for the same keyword, it should flag a contradiction.
+
+JSON Response: The analysis result should be returned as a JSON object, including the contradiction status and a detailed report.
+
+Frontend (HTML/CSS/JS)
+Dashboard Layout: Recreate the layout from the "Smart Doc Checker" screenshot, including the "Upload Documents" card, the "Live Monitoring" panel, and the "Analysis Status" section.
+
+File Selection: Implement the drag-and-drop functionality or a "Select Files" button. Display the names of the selected files.
+
+Progress Indicator: The "Analysis Status" section should dynamically update based on the backend's response, showing "Document Processing," "AI Analysis," and "Report Generation" status (e.g., Pending, Ready, Waiting).
+
+Report Display: Once the backend returns the analysis result, display the contradiction report in a user-friendly format on the dashboard. This could be a new panel or a modal window.
+
+Aesthetics: Use a modern design with rounded corners, a professional color palette, and clear typography.
